@@ -43,11 +43,6 @@ circle {
     fill: #9ACBD0;
 }
 
-line {
-    stroke: #006A71;
-    stroke-width: "3";
-    fill: #9ACBD0;
-}
 
 button {
     margin: 10px;
