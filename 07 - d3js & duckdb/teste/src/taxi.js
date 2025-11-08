@@ -10,7 +10,7 @@ export class Taxi {
         this.table = 'taxi_2023';
     }
 
-    async loadTaxi(months = 12) {
+    async loadTaxi(months = 6) {
         if (!this.db || !this.conn)
             throw new Error('Database not initialized. Please call init() first.');
 
@@ -18,10 +18,9 @@ export class Taxi {
 
         for (let id = 1; id <= months; id++) {
             const sId = String(id).padStart(2, '0')
-            files.push({ key: `Y2023M${sId}`, url: `${this.color}/${this.color}_tripdata_2023-${sId}.parquet` });
+            files.push({ key: `Y2023M${sId}`, url: `../${this.color}/${this.color}_tripdata_2023-${sId}.parquet` });
 
             const res = await fetch(files[files.length - 1].url);
-            console.log(res)
             await this.db.registerFileBuffer(files[files.length - 1].key, new Uint8Array(await res.arrayBuffer()));
         }
 
@@ -30,6 +29,8 @@ export class Taxi {
                 SELECT * 
                 FROM read_parquet([${files.map(d => d.key).join(",")}]);
         `);
+
+        return files;
     }
 
     async query(sql) {
