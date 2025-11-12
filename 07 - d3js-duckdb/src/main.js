@@ -38,5 +38,7 @@ window.onload = async () => {
     console.log(data);
 
     callbacks(data);
+
+    await loadChart(data);
 };
 

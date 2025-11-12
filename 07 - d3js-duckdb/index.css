@@ -52,3 +52,19 @@ line {
 button {
     margin: 10px;
 }
+
+.axis path,
+.axis line {
+    stroke: #ccc;
+    shape-rendering: crispEdges;
+}
+
+.axis text {
+    font-size: 0.8em; /* Ajusta o tamanho da fonte dos eixos */
+    fill: #333;
+}
+
+/* Remove a linha do eixo Y (opcional, visual limpo) */
+#axisY path {
+    stroke: none;
+}
