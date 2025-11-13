@@ -15,30 +15,45 @@
             border: #bfbfbf solid 1px; 
             height: 500px;
             width: 1000px; 
+            display: block;
         }
         #loader { display: none; padding: 10px; color: #333; }
         button { margin: 10px; }
 
-        
         .axis path,
         .axis line {
             stroke: #ccc;
             shape-rendering: crispEdges;
         }
-
         .axis text {
             font-size: 0.8em; 
             fill: #333;
         }
-
         #axisY path {
             stroke: none;
         }
-
         .bars rect {
             fill: steelblue;
         }
         
+        #justification-box {
+            font-family: Arial, sans-serif;
+            font-size: 0.9em;
+            color: #333;
+            background-color: #f4f4f4;
+            border-left: 4px solid #ccc;
+            padding: 10px 15px;
+            margin: 0 10px 10px 10px;
+            width: 970px;
+            box-sizing: border-box;
+        }
+        #justification-box h3 {
+            margin: 0 0 5px 0;
+            color: #000;
+        }
+        #justification-box p {
+            margin: 0;
+        }
     </style>
   </head>
   <body>
@@ -58,6 +73,9 @@
     </div>
 
     <svg></svg>
+
+    <div id="justification-box">
+    </div>
 
     <button id="clearBtn">Limpar Gráfico</button>
 

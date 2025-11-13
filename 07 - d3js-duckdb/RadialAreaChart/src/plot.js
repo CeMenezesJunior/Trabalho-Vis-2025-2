@@ -2,35 +2,35 @@ import * as d3 from 'd3';
 
 export async function loadRadialChart(data, title) {
     const svg = d3.select('svg');
-    svg.selectAll('*').remove();
+    
+    clearChart();
 
     const width = +svg.style('width').split('px')[0] || 800;
     const height = +svg.style('height').split('px')[0] || 600;
     
     const margin = 60;
     const radius = Math.min(width, height) / 2 - margin;
+
+    const mainGroup = svg.append('g').attr('id', 'group');
     
-    const defs = svg.append("defs");
+    const defs = mainGroup.append("defs");
     
     const gradient = defs.append("radialGradient")
         .attr("id", "radar-gradient")
-        .attr("cx", "50%")
-        .attr("cy", "50%")
-        .attr("r", "50%")
-        .attr("fx", "50%")
-        .attr("fy", "50%");
+        .attr("cx", "50%").attr("cy", "50%").attr("r", "50%")
+        .attr("fx", "50%").attr("fy", "50%");
 
     gradient.append("stop")
         .attr("offset", "0%")
         .attr("stop-color", "#FFC107") 
-        .attr("stop-opacity", 0.4);    
+        .attr("stop-opacity", 0.4); 
 
     gradient.append("stop")
         .attr("offset", "100%")
         .attr("stop-color", "#FF6F00") 
-        .attr("stop-opacity", 0.9);   
+        .attr("stop-opacity", 0.9); 
 
-    const g = svg.append("g")
+    const g = mainGroup.append("g")
         .attr("transform", `translate(${width / 2}, ${height / 2 + 20})`);
 
     const x = d3.scaleLinear()
@@ -80,7 +80,7 @@ export async function loadRadialChart(data, title) {
         .style("fill", d => d % 6 === 0 ? "#333" : "#999") 
         .style("font-family", "sans-serif");
 
-    svg.append("text")
+    mainGroup.append("text")
         .attr("x", width / 2)
         .attr("y", 30)
         .attr("text-anchor", "middle")
@@ -128,5 +128,5 @@ export async function loadRadialChart(data, title) {
 }
 
 export function clearChart() {
-    d3.select('svg').selectAll('*').remove();
+    d3.select('svg').selectAll('#group').remove();
 }
