@@ -4,22 +4,59 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Trabalho Visualização (Taxis NYC)</title>
-    <link rel="stylesheet" href="./index.css" />
+    
+    <style>
+        body { margin: 20px; font-family: 'Times New Roman', Times, serif; font-size: 1.25em; }
+        #controls { margin-bottom: 10px; } 
+        svg { 
+            margin: 10px; 
+            background-color: #ffffff; 
+            border-radius: 8px; 
+            border: #bfbfbf solid 1px; 
+            height: 500px;
+            width: 1000px; 
+        }
+        #loader { display: none; padding: 10px; color: #333; }
+        button { margin: 10px; }
+
+        
+        .axis path,
+        .axis line {
+            stroke: #ccc;
+            shape-rendering: crispEdges;
+        }
+
+        .axis text {
+            font-size: 0.8em; 
+            fill: #333;
+        }
+
+        #axisY path {
+            stroke: none;
+        }
+
+        .bars rect {
+            fill: steelblue;
+        }
+        
+    </style>
   </head>
   <body>
     
-    <h1>Visualizações - Taxis de NYC (2023)</h1>
+    <h1>Visualizações - Taxis de NYC</h1>
     
     <div id="controls">
         <button id="loadMapBtn">Carregar Mapa de Calor (Green Cabs)</button>
         <button id="loadPaymentBtn">Carregar Análise de Pagamentos (Yellow Cabs)</button>
+        <button id="loadPandemiaBtn">Carregar Distância Média (Pandemia - Green Cabs)</button>
     </div>
 
-    <div id="loader" style="display: none; padding: 10px; color: #333;">
+    <div id="loader">
         <h2>Carregando dados... Por favor, aguarde.</h2>
         <p>(Isso pode demorar alguns segundos)</p>
     </div>
-    <svg style="width: 1000px; height: 500px;"></svg>
+
+    <svg></svg>
 
     <button id="clearBtn">Limpar Gráfico</button>
 
