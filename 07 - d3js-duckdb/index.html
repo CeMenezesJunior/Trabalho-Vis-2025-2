@@ -1,23 +1,29 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <title>Carregamento dos Dados</title>
-    <link rel="stylesheet" href="index.css">
-</head>
-
-<body>
-    <div class="main-container">
-        <svg>
-        </svg>
-        <div class="buttom-container">
-            <button id="loadBtn">Load Chart</button>
-            <button id="clearBtn">Clear Chart</button>
-        </div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Trabalho Visualização (Taxis NYC)</title>
+    <link rel="stylesheet" href="./index.css" />
+  </head>
+  <body>
+    
+    <h1>Visualizações - Taxis de NYC (2023)</h1>
+    
+    <div id="controls">
+        <button id="loadMapBtn">Carregar Mapa de Calor (Green Cabs)</button>
+        <button id="loadPaymentBtn">Carregar Análise de Pagamentos (Yellow Cabs)</button>
     </div>
 
-    <script type="module" src="MapaDeCalor/src/main.js"></script>
-</body>
+    <div id="loader" style="display: none; padding: 10px; color: #333;">
+        <h2>Carregando dados... Por favor, aguarde.</h2>
+        <p>(Isso pode demorar alguns segundos)</p>
+    </div>
+    <svg style="width: 1000px; height: 500px;"></svg>
 
+    <button id="clearBtn">Limpar Gráfico</button>
+
+    <script type="module" src="/loader.js"></script>
+    
+  </body>
 </html>
